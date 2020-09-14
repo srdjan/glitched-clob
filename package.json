@@ -14,10 +14,13 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "uwebsockets.js": "^18.3.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "compile": "tsc ./server/index.ts --downlevelIteration --outDir temp/",
+    "prestart": "npm run build",
+    "start": "node temp/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -36,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "ts-node": "^9.0.0"
   }
 }
