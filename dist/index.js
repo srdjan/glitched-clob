@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var uWS = require('uWebSockets.js');
+var uWS = require('uwebsockets.js');
 var Market = require("./market");
 var utils_1 = require("./utils");
 uWS

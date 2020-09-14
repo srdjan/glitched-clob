@@ -1,4 +1,4 @@
-const uWS = require('uWebSockets.js')
+const uWS = require('uwebsockets.js')
 import * as Market from './market'
 import { log } from './utils'
 
