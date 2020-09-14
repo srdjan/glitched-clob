@@ -1,13 +1,286 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  margin: 0 auto;
+  max-width: 55em;
+  scroll-behavior: smooth;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 0.8em;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  /* height: 300px; Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.navigation {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0;
+  background: #21272475;
+  text-shadow: 1px 2px #a32d2d;
+  font-size: medium;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: black;
+}
+
+.navigation a:hover {
+  background: #dee1f5;
+}
+
+@media all and (max-width: 800px) {
+  .navigation {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .navigation {
+    flex-flow: column wrap;
+    padding: 0;
+  }
+  .navigation a {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .navigation li:last-of-type a {
+    border-bottom: none;
+  }
+}
+
+.main {
+  position: relative;
+  left: 5%;
+}
+
+@media all and (min-width: 600px) {
+  .aside {
+    flex: 1 0 0;
+  }
+}
+
+@media all and (min-width: 800px) {
+  .main {
+    flex: 3 0px;
+  }
+  .main {
+    order: 2;
+  }
+  .footer {
+    order: 4;
+  }
+}
+
+.container {
+  display: flex;
+}
+
+.item {
+  flex-grow: 1;
+}
+
+.item + .item {
+  margin-left: 0.1%;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  table-layout: fixed;
+  text-align: center;
+  padding-top: 1px;
+  min-width: 30wv;
+}
+thead {
+  border: rgba(0, 0, 0, 0.1);
+}
+
+td,
+th {
+  padding-top: 0.5em;
+}
+tr {
+  line-height: 1.2em;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.buy {
+  color: green;
+}
+.sell {
+  color: crimson;
+}
+
+/* ---- form */
+form {
+  width: 15em;
+}
+input,
+select,
+textarea,
+.fresh-input {
+  background-color: transparent;
+  box-sizing: border-box;
+  box-shadow: none;
+  max-width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-image: initial;
+  border-color: inherit;
+  border-radius: 3px;
+  font: inherit;
+  margin: 0.5em 0px;
+  padding: 0.75em;
+  transition: border-color 0.2s ease 0s;
+}
+
+/* Text Area and Markdown */
+textarea,
+.fresh-input-textarea,
+.fresh-input-markdown {
+  min-height: 6rem;
+}
+
+@media (min-width: 800px) {
+  .fresh-input-textarea {
+    width: 50%;
+  }
+}
+
+/* Label and Tooltip */
+.fresh-label {
+  position: relative;
+}
+
+.fresh-title {
+  display: flex;
+  align-items: center;
+}
+
+.fresh-title .fresh-tooltip {
+  position: relative;
+  color: #000;
+}
+
+.fresh-title .fresh-tooltip:after {
+  position: absolute;
+  left: 150%;
+  min-width: 100px;
+  content: attr(data-tooltip);
+  opacity: 0;
+  transition: all 0.3s ease-in-out 0.35s;
+  visibility: hidden;
+  z-index: 2;
+  position: absolute;
+  background-color: #eee;
+  padding: 0.75em;
+  border-radius: 3px;
+  font-size: 0.8em;
+}
+
+.fresh-title .fresh-tooltip:hover:after {
+  opacity: 1;
+  left: 130%;
+  visibility: visible;
+}
+
+.fresh-title .fresh-tooltip-icon {
+  position: relative;
+  height: 0.8em;
+  width: 0.8em;
+  min-height: 0.8em;
+  min-width: 0.8em;
+}
+
+/* Reference Field */
+.fresh-focused {
+  border: 1px solid #eee;
+  max-height: 200px;
+  overflow-y: scroll;
+  position: absolute;
+  width: 100%;
+  margin-top: -0.5em;
+  border-top: 0;
+}
+
+/* Select Field */
+.fresh-input-select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 30px;
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
+}
+
+/* Tag Field */
+.fresh-input-tags {
+  margin-top: 1rem;
+}
+
+.react-tagsinput-tag {
+  background: #eee;
+  padding: 6px 10px;
+  margin: 0 6px 0 0;
+}
+
+.react-tagsinput-input {
+  margin-top: 1rem;
+  display: block;
+}
+
+button {
+  background-color: #21272475;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
